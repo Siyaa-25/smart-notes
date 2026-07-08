@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Personal workspace</p>
+        <h1>Smart Notes</h1>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+        <span class="theme-icon" aria-hidden="true">DM</span>
+        <span id="themeText">Dark</span>
+      </button>
+    </header>
+
+    <main class="layout">
+      <section class="editor-panel" aria-labelledby="editorTitle">
+        <div class="section-heading">
+          <h2 id="editorTitle">Add a Note</h2>
+          <p id="formHint">Capture a thought before it wanders off.</p>
+        </div>
+
+        <form id="noteForm" class="note-form">
+          <input type="hidden" id="noteId">
+
+          <label for="noteTitle">Title</label>
+          <input id="noteTitle" type="text" placeholder="Meeting ideas, study plan..." maxlength="80" required>
+
+          <label for="noteContent">Note</label>
+          <textarea id="noteContent" rows="8" placeholder="Write your note here..." required></textarea>
+
+          <div class="form-actions">
+            <button class="primary-btn" type="submit" id="saveBtn">Add Note</button>
+            <button class="ghost-btn hidden" type="button" id="cancelEditBtn">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="notes-panel" aria-labelledby="notesTitle">
+        <div class="notes-toolbar">
+          <div>
+            <h2 id="notesTitle">Your Notes</h2>
+            <p><span id="noteCount">0</span> saved</p>
+          </div>
+
+          <label class="search-box" for="searchInput">
+            <span aria-hidden="true">Search</span>
+            <input id="searchInput" type="search" placeholder="Search notes...">
+          </label>
+        </div>
+
+        <div id="notesList" class="notes-grid" aria-live="polite"></div>
+
+        <div id="emptyState" class="empty-state">
+          <div aria-hidden="true">+</div>
+          <h3>No notes yet</h3>
+          <p>Add your first note and it will stay here even after you close the browser.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
